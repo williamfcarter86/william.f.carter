@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -232,6 +228,24 @@ img{
   word-break:break-word;
 }
 .hero-name strong{font-weight:700;display:block}
+.hero-photo-badge{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:24px;
+}
+.hero-photo-badge img{
+  width:64px;height:64px;border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--gold);
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  flex-shrink:0;
+}
+.hero-photo-badge-text{
+  font-size:.78rem;color:var(--stone);line-height:1.5;
+}
+.hero-photo-badge-text strong{
+  display:block;color:var(--black);font-size:.9rem;
+  font-family:'Cormorant Garant',serif;font-weight:700;
+}
 .hero-byline{
   font-family:'Cormorant Garant',serif;
   font-size:clamp(1rem,2vw,1.3rem);font-style:italic;
@@ -897,7 +911,7 @@ footer{
   </div>
   <div class="hero-right">
     <div class="hero-book-display">
-      <img class="hero-book-img" src="Fire and Wrath Front Cover.jpg" alt="Fire and Wrath by William F. Carter"/>
+      <img class="hero-book-img" src="fire.jpg" alt="Fire and Wrath by William F. Carter"/>
       <div class="hero-book-spine" aria-hidden="true"></div>
       <div class="hero-book-label">
         <strong>Fire and Wrath</strong>
