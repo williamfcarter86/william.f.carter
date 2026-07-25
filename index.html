@@ -221,31 +221,13 @@ img{
 .hero-series::before{content:'';width:32px;height:1px;background:var(--gold)}
 .hero-name{
   font-family:'Cormorant Garant',serif;
-  font-size:clamp(2.6rem,7vw,6.5rem);
+  font-size:clamp(3.5rem,7vw,6.5rem);
   font-weight:300;line-height:.95;
   color:var(--black);letter-spacing:-.01em;
   margin-bottom:8px;
   word-break:break-word;
 }
 .hero-name strong{font-weight:700;display:block}
-.hero-photo-badge{
-  display:flex;align-items:center;gap:16px;
-  margin-bottom:24px;
-}
-.hero-photo-badge img{
-  width:64px;height:64px;border-radius:50%;
-  object-fit:cover;
-  border:2px solid var(--gold);
-  box-shadow:0 6px 18px rgba(0,0,0,.15);
-  flex-shrink:0;
-}
-.hero-photo-badge-text{
-  font-size:.78rem;color:var(--stone);line-height:1.5;
-}
-.hero-photo-badge-text strong{
-  display:block;color:var(--black);font-size:.9rem;
-  font-family:'Cormorant Garant',serif;font-weight:700;
-}
 .hero-byline{
   font-family:'Cormorant Garant',serif;
   font-size:clamp(1rem,2vw,1.3rem);font-style:italic;
@@ -293,7 +275,7 @@ img{
   max-width:100%;
 }
 .hero-book-img{
-  width:260px;max-width:70vw;
+  width:420px;max-width:85vw;
   box-shadow:
     -20px 20px 60px rgba(0,0,0,.18),
     -8px 8px 20px rgba(0,0,0,.12),
@@ -314,12 +296,7 @@ img{
   z-index:1;
   box-shadow:4px 0 12px rgba(0,0,0,.3);
 }
-.hero-book-label{
-  margin-top:28px;text-align:center;
-  font-family:'Courier Prime',monospace;
-  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);
-}
-.hero-book-label strong{color:var(--gold);display:block;margin-bottom:4px;font-size:.85rem}
+.hero-book-label{display:none;}
 .hero-decor-line{
   position:absolute;bottom:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
@@ -389,7 +366,7 @@ img{
 }
 #book .book-title{
   font-family:'Cormorant Garant',serif;
-  font-size:clamp(2.4rem,5vw,4.2rem);
+  font-size:clamp(2.8rem,5vw,4.2rem);
   font-weight:700;line-height:1.02;
   color:var(--black);margin-bottom:12px;
   word-break:break-word;
@@ -517,6 +494,10 @@ img{
 .author-photo-caption strong{color:var(--black);display:block;margin-bottom:4px}
 .about-award-photo{
   margin-top:20px;
+}
+.award-photo-img{
+  width:100%;border-radius:2px;box-shadow:0 12px 30px rgba(0,0,0,.1);
+  display:block;
 }
 .about-text{min-width:0}
 .about-text p{font-size:1rem;line-height:1.9;color:var(--stone);margin-bottom:22px}
@@ -797,6 +778,15 @@ footer{
 .footer-legal a{font-size:.75rem;color:rgba(255,255,255,.3);transition:color .2s}
 .footer-legal a:hover{color:rgba(255,255,255,.6)}
 
+/* ─── GIVEAWAY BADGE ON NAV ─── */
+.nav-links a[href="#giveaway"]{
+  color:var(--gold-dark)!important;
+  font-weight:600!important;
+}
+.nav-links a[href="#giveaway"]::after{
+  background:var(--gold)!important;
+}
+
 /* ─── SCROLL ANIMATIONS ─── */
 .reveal{
   opacity:0;transform:translateY(28px);
@@ -844,6 +834,7 @@ footer{
   .hero-stats{gap:20px}
   .book-stats-row{flex-wrap:wrap}
   .bstat{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--border)}
+  .giveaway-grid{grid-template-columns:1fr!important;gap:40px!important}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -853,6 +844,13 @@ footer{
 <body>
 <div id="scroll-progress"></div>
 
+<!-- GIVEAWAY BANNER -->
+<div id="giveaway-banner" style="background:var(--gold);color:var(--black);text-align:center;padding:10px 48px;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:201;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
+  <span>Win a Signed Copy of Fire and Wrath &mdash; Goodreads Giveaway Now Open!</span>
+  <a href="https://www.goodreads.com/giveaway/show/446199-fire-and-wrath" target="_blank" style="background:var(--black);color:var(--white);padding:5px 14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap;text-decoration:none">Enter Now</a>
+  <button onclick="this.parentElement.style.display='none'" style="position:absolute;right:16px;background:none;border:none;cursor:pointer;font-size:1.1rem;color:rgba(0,0,0,.5);line-height:1;top:50%;transform:translateY(-50%)">&times;</button>
+</div>
+
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">William F. Carter</a>
@@ -861,6 +859,7 @@ footer{
     <li><a href="#about">About</a></li>
     <li><a href="#press">Press</a></li>
     <li><a href="#events">Events</a></li>
+    <li><a href="#giveaway">Giveaway</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" class="nav-cta">Free Story</a></li>
   </ul>
@@ -874,6 +873,7 @@ footer{
     <li><a href="#about" class="mobile-link">About</a></li>
     <li><a href="#press" class="mobile-link">Press</a></li>
     <li><a href="#events" class="mobile-link">Events</a></li>
+    <li><a href="#giveaway" class="mobile-link">Giveaway</a></li>
     <li><a href="#contact" class="mobile-link">Contact</a></li>
     <li><a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" class="mobile-link">Get Free Story</a></li>
   </ul>
@@ -900,8 +900,8 @@ footer{
         <span class="hero-stat-label">Goodreads Stars</span>
       </div>
       <div>
-        <span class="hero-stat-num">92+</span>
-        <span class="hero-stat-label">Reader Reviews</span>
+        <span class="hero-stat-num">55+</span>
+        <span class="hero-stat-label">Amazon Reviews</span>
       </div>
       <div>
         <span class="hero-stat-num">4</span>
@@ -911,7 +911,7 @@ footer{
   </div>
   <div class="hero-right">
     <div class="hero-book-display">
-      <img class="hero-book-img" src="fire.jpg" alt="Fire and Wrath by William F. Carter"/>
+      <img class="hero-book-img img-reveal" src="fire.jpg" alt="Fire and Wrath by William F. Carter"/>
       <div class="hero-book-spine" aria-hidden="true"></div>
       <div class="hero-book-label">
         <strong>Fire and Wrath</strong>
@@ -927,7 +927,7 @@ footer{
   <div class="cred-inner">
     <div class="cred-item"><strong>Harvard</strong>&nbsp;MFA in Creative Writing</div>
     <div class="cred-item"><strong>4.90</strong>&nbsp;Stars on Goodreads</div>
-    <div class="cred-item"><strong>92+</strong>&nbsp;Verified Reader Reviews</div>
+    <div class="cred-item"><strong>55+</strong>&nbsp;Verified Amazon Reviews</div>
     <div class="cred-item"><strong>#1</strong>&nbsp;Crime Fiction Search Ranking</div>
     <div class="cred-item"><strong>Book 2</strong>&nbsp;In Development</div>
   </div>
@@ -939,7 +939,7 @@ footer{
     <div class="book-grid">
       <div class="book-cover-col reveal">
         <div class="book-cover-frame">
-          <img class="book-cover-img" src="Fire and Wrath Front Cover.jpg" alt="Fire and Wrath cover"/>
+          <img class="book-cover-img img-reveal" src="Fire and Wrath Front Cover.jpg" alt="Fire and Wrath cover"/>
         </div>
         <div class="book-award">
           <div class="book-award-icon" aria-hidden="true">★</div>
@@ -979,11 +979,11 @@ footer{
         <div class="book-buy-row">
           <a href="https://www.amazon.com/dp/B0D56NXGBH" target="_blank" class="btn btn-solid">Buy on Amazon</a>
           <a href="https://www.amazon.com/dp/B0D56NXGBH" target="_blank" class="btn btn-outline">Kindle Edition</a>
-          <a href="https://www.goodreads.com" target="_blank" class="btn btn-outline">Goodreads</a>
+          <a href="https://www.goodreads.com/book/show/213850481-fire-and-wrath" target="_blank" class="btn btn-outline">Goodreads</a>
         </div>
         <div class="book-stats-row">
           <div class="bstat"><span class="bstat-num">4.90</span><span class="bstat-lbl">Stars</span></div>
-          <div class="bstat"><span class="bstat-num">92+</span><span class="bstat-lbl">Reviews</span></div>
+          <div class="bstat"><span class="bstat-num">55+</span><span class="bstat-lbl">Reviews</span></div>
           <div class="bstat"><span class="bstat-num">4</span><span class="bstat-lbl">Continents</span></div>
           <div class="bstat"><span class="bstat-num">#1</span><span class="bstat-lbl">Crime Search</span></div>
         </div>
@@ -1050,6 +1050,22 @@ footer{
           <p class="review-src">Goodreads Reviewer &bull; India</p>
         </div>
       </div>
+      <div class="review-card reveal">
+        <div class="review-stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="review-q">&ldquo;William F. Carter delivers an exciting and well-written novel with plenty of mystery and emotion. The concept of using a former arsonist to hunt a serial firestarter is unique and handled brilliantly.&rdquo;</p>
+        <div class="review-meta">
+          <p class="review-name">Ashley</p>
+          <p class="review-src">Verified Amazon Purchaser &bull; Kindle &bull; July 2026</p>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="review-q">&ldquo;Fire and Wrath is much more than a typical thriller. Jack Coyle is a fascinating protagonist, and his personal journey adds real emotional weight to the investigation.&rdquo;</p>
+        <div class="review-meta">
+          <p class="review-name">Laura V</p>
+          <p class="review-src">Verified Amazon Purchaser &bull; Kindle &bull; July 2026</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1069,7 +1085,7 @@ footer{
         <div class="credentials-list">
           <div class="cred-line">Master of Arts in Creative Writing, Harvard University</div>
           <div class="cred-line">Praised by Chris Mooney, #1 New York Times Bestselling Author</div>
-          <div class="cred-line">92+ reader reviews at 4.90 stars on Goodreads</div>
+          <div class="cred-line">55+ Amazon reviews and 92+ Goodreads reviews at 4.90 stars</div>
           <div class="cred-line">Readers comparing Fire and Wrath to Lehane, Connelly, DeMille, and French</div>
           <div class="cred-line">First writing award received at age twelve</div>
           <div class="cred-line">Book 2 in the Jack Coyle Thrillers series in development</div>
@@ -1078,17 +1094,14 @@ footer{
       </div>
       <div class="about-photo-col reveal reveal-delay-2">
         <div class="author-photo-frame">
-          <img class="author-photo-img" src="William headshot.jpg" alt="William F. Carter, author"/>
+          <img class="author-photo-img img-reveal" src="William headshot.jpg" alt="William F. Carter, author"/>
         </div>
         <div class="author-photo-caption">
           <strong>William F. Carter</strong>
           Author of the Jack Coyle Thriller Series<br/>Harvard MFA &bull; Boston, Massachusetts
         </div>
         <div class="about-award-photo">
-          <img src="fire.jpg" alt="William F. Carter with Fire and Wrath" style="width:100%;border-radius:2px;box-shadow:0 12px 30px rgba(0,0,0,.1);"/>
-        </div>
-        <div class="about-award-photo" style="margin-top:20px">
-          <img class="award-photo-img" src="award.jpg" alt="William Carter's age-12 writing award" style="width:100%;border-radius:2px;box-shadow:0 12px 30px rgba(0,0,0,.1);"/>
+          <img class="award-photo-img img-reveal" src="award.jpg" alt="William Carter's age-12 writing award"/>
         </div>
       </div>
     </div>
@@ -1099,7 +1112,7 @@ footer{
 <section id="plymouth">
   <div class="plym-grid">
     <div class="plym-img-col">
-      <img class="plym-photo" src="Plymouth's woods.webp" alt="Plymouth County woods, Massachusetts"/>
+      <img class="plym-photo img-reveal" src="Plymouth's woods.webp" alt="Plymouth County woods, Massachusetts"/>
     </div>
     <div class="plym-content reveal">
       <span class="eyebrow">The Setting</span>
@@ -1124,6 +1137,71 @@ footer{
         <button class="sub-btn" onclick="window.open('https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues','_blank')">Send Me the Story</button>
       </div>
       <p class="sub-note">No spam. Just Jack Coyle. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GIVEAWAY -->
+<section id="giveaway" class="section" style="background:var(--black);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,169,110,.07) 0%,transparent 65%);pointer-events:none"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="giveaway-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color:rgba(200,169,110,.8)">Goodreads Giveaway</span>
+        <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:20px">Win a <em style="color:var(--gold);font-style:italic">Signed Copy</em><br/>of Fire and Wrath</h2>
+        <div style="width:48px;height:2px;background:var(--gold);margin-bottom:28px"></div>
+        <p style="font-size:1rem;line-height:1.85;color:rgba(255,255,255,.6);margin-bottom:16px">Three signed paperback copies are up for grabs. Enter on Goodreads for your chance to win a personally signed copy of the Jack Coyle crime thriller that readers on four continents have called unforgettable.</p>
+        <p style="font-family:'Courier Prime',monospace;font-style:italic;font-size:.9rem;color:var(--gold);line-height:1.7;margin-bottom:32px">&ldquo;Some fires never go out. They just wait.&rdquo;</p>
+        <a href="https://www.goodreads.com/giveaway/show/446199-fire-and-wrath" target="_blank" class="btn btn-gold" style="font-size:.8rem;padding:14px 32px;margin-right:12px">Enter the Giveaway</a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div style="border:1px solid rgba(200,169,110,.2);padding:40px;background:rgba(255,255,255,.02)">
+          <p style="font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,169,110,.6);margin-bottom:24px">Giveaway Details</p>
+          <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.07)">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.5);letter-spacing:.04em">Copies Available</span>
+              <span style="font-family:'Cormorant Garant',serif;font-size:1.4rem;font-weight:700;color:var(--gold)">3 Signed</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.5);letter-spacing:.04em">Opens</span>
+              <span style="font-size:.9rem;font-weight:600;color:var(--white)">July 27, 2026</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.5);letter-spacing:.04em">Closes</span>
+              <span style="font-size:.9rem;font-weight:600;color:var(--white)">August 17, 2026</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.5);letter-spacing:.04em">Format</span>
+              <span style="font-size:.9rem;font-weight:600;color:var(--white)">Signed Paperback</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.5);letter-spacing:.04em">Eligible Countries</span>
+              <span style="font-size:.9rem;font-weight:600;color:var(--white)">United States</span>
+            </div>
+          </div>
+          <div id="countdown-wrap" style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(200,169,110,.15)">
+            <p style="font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,169,110,.5);margin-bottom:16px" id="countdown-label">Opens In</p>
+            <div style="display:flex;gap:16px" id="countdown-display">
+              <div style="text-align:center">
+                <span id="cd-days" style="font-family:'Cormorant Garant',serif;font-size:2.4rem;font-weight:700;color:var(--gold);display:block;line-height:1">--</span>
+                <span style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Days</span>
+              </div>
+              <span style="font-family:'Cormorant Garant',serif;font-size:2rem;color:rgba(200,169,110,.3);align-self:flex-start;margin-top:4px">:</span>
+              <div style="text-align:center">
+                <span id="cd-hours" style="font-family:'Cormorant Garant',serif;font-size:2.4rem;font-weight:700;color:var(--gold);display:block;line-height:1">--</span>
+                <span style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Hours</span>
+              </div>
+              <span style="font-family:'Cormorant Garant',serif;font-size:2rem;color:rgba(200,169,110,.3);align-self:flex-start;margin-top:4px">:</span>
+              <div style="text-align:center">
+                <span id="cd-mins" style="font-family:'Cormorant Garant',serif;font-size:2.4rem;font-weight:700;color:var(--gold);display:block;line-height:1">--</span>
+                <span style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Mins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1179,83 +1257,19 @@ footer{
             </div>
           </div>
           <div class="press-card">
-            <span class="press-card-type">Author Interview</span>
+            <span class="press-card-type">Print Interview</span>
             <div class="press-card-content">
-              <p class="press-card-title">William F. Carter &mdash; Author Interview</p>
-              <p class="press-card-outlet">Vowelor</p>
-              <a href="https://vowelor.com/william-f-carter-author-interview/" target="_blank" class="press-card-arrow">Read Interview</a>
+              <p class="press-card-title">Interview &bull; Publication Name</p>
+              <p class="press-card-outlet">Outlet Name &bull; Date</p>
+              <a href="#" class="press-card-arrow">Read Interview</a>
             </div>
           </div>
           <div class="press-card">
-            <span class="press-card-type">Feature</span>
+            <span class="press-card-type">TV Interview</span>
             <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Book Feature</p>
-              <p class="press-card-outlet">Vowelor</p>
-              <a href="https://vowelor.com/book/fire-wrath-william-f-carter/" target="_blank" class="press-card-arrow">Read Feature</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 1</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=6rHNiW4uFZg&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=2" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 2</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=K-iThBa7CKs&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=4" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 3</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=BTtVsWxQjbc&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=5" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 4</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=AtPU_zVUY68&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=6" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 5</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=iTn3gl92xHo&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=9" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 6</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=M0XB3aFZ8bU&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=8" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Video Interview</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Fire and Wrath &mdash; Author Conversation, Part 7</p>
-              <p class="press-card-outlet">YouTube</p>
-              <a href="https://www.youtube.com/watch?v=hFAx9mEExNI&list=PL_y8pqSw3Uef4lO-mYgBfUz4McYGaC2k-&index=10" target="_blank" class="press-card-arrow">Watch Interview</a>
-            </div>
-          </div>
-          <div class="press-card">
-            <span class="press-card-type">Press Release</span>
-            <div class="press-card-content">
-              <p class="press-card-title">Author William F. Carter to Release Debut Crime Thriller Novel</p>
-              <p class="press-card-outlet">McGrathPR &bull; June 24, 2024</p>
-              <a href="https://mcgrathpr.com/author-william-f-carter-to-release-debut-crime-thriller-novel/" target="_blank" class="press-card-arrow">Read Press Release</a>
+              <p class="press-card-title">Television Appearance &bull; Channel Name</p>
+              <p class="press-card-outlet">Local Cable &bull; Date</p>
+              <a href="#" class="press-card-arrow">Watch Interview</a>
             </div>
           </div>
         </div>
@@ -1273,7 +1287,7 @@ footer{
     <div class="faq-grid">
       <div class="faq-item reveal">
         <p class="faq-q">When is Book 2 in the Jack Coyle series releasing?</p>
-        <p class="faq-a">Book 2, titled Diesel and Ash, is currently in development. Sign up for the email list to be among the very first to hear the announcement and receive early access content before the public launch.</p>
+        <p class="faq-a">Book 2 is currently in development. Sign up for the email list to be among the very first to hear the announcement and receive early access content before the public launch.</p>
       </div>
       <div class="faq-item reveal reveal-delay-1">
         <p class="faq-q">Where can I buy Fire and Wrath?</p>
@@ -1523,10 +1537,10 @@ footer{
         <span class="footer-logo-text">William F. Carter</span>
         <p class="footer-tagline">Author of the Jack Coyle Thriller Series.<br/>Harvard MFA. Boston, Massachusetts.</p>
         <div class="footer-socials">
-          <a href="https://www.facebook.com/williamfcarter" target="_blank" class="footer-social" aria-label="Facebook">Fb</a>
-          <a href="https://www.instagram.com/william.f.carter/" target="_blank" class="footer-social" aria-label="Instagram">In</a>
-          <a href="https://www.linkedin.com/in/bill-carter-4663a118/" target="_blank" class="footer-social" aria-label="LinkedIn">Ln</a>
-          <a href="https://www.goodreads.com" target="_blank" class="footer-social" aria-label="Goodreads">Gr</a>
+          <a href="#" class="footer-social" aria-label="Twitter">𝕏</a>
+          <a href="#" class="footer-social" aria-label="Instagram">In</a>
+          <a href="#" class="footer-social" aria-label="Facebook">Fb</a>
+          <a href="https://www.goodreads.com/author/show/71219829.William_F_Carter" target="_blank" class="footer-social" aria-label="Goodreads">Gr</a>
         </div>
       </div>
       <div class="footer-nav-col">
@@ -1604,7 +1618,7 @@ const ruleObserver=new IntersectionObserver(entries=>{
 },{threshold:0.3});
 document.querySelectorAll('.gold-rule').forEach(el=>ruleObserver.observe(el));
 
-// CONTACT FORM — REAL SUBMISSION VIA FORMSPREE, STAYS ON PAGE
+// CONTACT FORM — REAL SUBMISSION VIA FORMSPREE
 const contactForm=document.getElementById('contactForm');
 const contactSubmitBtn=document.getElementById('contactSubmitBtn');
 contactForm.addEventListener('submit', async function(e){
@@ -1669,22 +1683,35 @@ window.addEventListener('scroll',()=>{
   scrollBar.style.width=scrolled+'%';
 },{passive:true});
 
-// HERO BOOK — SUBTLE 3D TILT ON MOUSE MOVE (desktop only)
-const heroBookImg=document.querySelector('.hero-book-img');
-const heroRight=document.querySelector('.hero-right');
-if(heroBookImg && heroRight && window.matchMedia('(hover:hover)').matches){
-  heroRight.addEventListener('mousemove',(e)=>{
-    const rect=heroRight.getBoundingClientRect();
-    const x=(e.clientX-rect.left)/rect.width-0.5;
-    const y=(e.clientY-rect.top)/rect.height-0.5;
-    heroBookImg.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-4px)`;
-  });
-  heroRight.addEventListener('mouseleave',()=>{
-    heroBookImg.style.transform='';
-  });
-  heroBookImg.style.transition='transform .15s ease-out';
-  heroBookImg.style.transformStyle='preserve-3d';
+// GIVEAWAY COUNTDOWN
+function updateCountdown(){
+  const openDate=new Date('2026-07-27T00:00:00-04:00');
+  const closeDate=new Date('2026-08-17T23:59:59-04:00');
+  const now=new Date();
+  const label=document.getElementById('countdown-label');
+  const daysEl=document.getElementById('cd-days');
+  const hoursEl=document.getElementById('cd-hours');
+  const minsEl=document.getElementById('cd-mins');
+  if(!daysEl) return;
+  let target,labelText;
+  if(now<openDate){target=openDate;labelText='Opens In';}
+  else if(now<closeDate){target=closeDate;labelText='Closes In';}
+  else{
+    const wrap=document.getElementById('countdown-wrap');
+    if(wrap) wrap.innerHTML='<p style="font-size:.85rem;color:var(--gold);font-family:Courier Prime,monospace;font-style:italic">This giveaway has ended. Thank you to everyone who entered.</p>';
+    return;
+  }
+  if(label) label.textContent=labelText;
+  const diff=target-now;
+  const days=Math.floor(diff/(1000*60*60*24));
+  const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+  daysEl.textContent=String(days).padStart(2,'0');
+  hoursEl.textContent=String(hours).padStart(2,'0');
+  minsEl.textContent=String(mins).padStart(2,'0');
 }
+updateCountdown();
+setInterval(updateCountdown,30000);
 
 // IMAGE REVEAL ON SCROLL
 document.querySelectorAll('img').forEach(img=>img.classList.add('img-reveal'));
@@ -1727,6 +1754,23 @@ function clampHorizontalOverflow(){
 }
 window.addEventListener('load',clampHorizontalOverflow);
 window.addEventListener('resize',clampHorizontalOverflow);
+
+// HERO BOOK — SUBTLE 3D TILT ON MOUSE MOVE (desktop only)
+const heroBookImg=document.querySelector('.hero-book-img');
+const heroRight=document.querySelector('.hero-right');
+if(heroBookImg && heroRight && window.matchMedia('(hover:hover)').matches){
+  heroRight.addEventListener('mousemove',(e)=>{
+    const rect=heroRight.getBoundingClientRect();
+    const x=(e.clientX-rect.left)/rect.width-0.5;
+    const y=(e.clientY-rect.top)/rect.height-0.5;
+    heroBookImg.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-4px)`;
+  });
+  heroRight.addEventListener('mouseleave',()=>{
+    heroBookImg.style.transform='';
+  });
+  heroBookImg.style.transition='transform .15s ease-out';
+  heroBookImg.style.transformStyle='preserve-3d';
+}
 </script>
 </body>
 </html>
