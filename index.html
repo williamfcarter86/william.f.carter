@@ -686,6 +686,94 @@ img{
   .book2-cover-frame{max-width:220px;margin:0 auto}
 }
 
+/* ─── AWARD NOMINATION CARD ─── */
+.award-nom-card{
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,var(--pale-gold) 0%,var(--white) 60%);
+  padding:32px;margin-bottom:32px;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 34px rgba(200,169,110,.18);
+}
+.award-nom-card::before{
+  content:'';position:absolute;top:-40%;right:-15%;
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,169,110,.16) 0%,transparent 70%);
+  pointer-events:none;
+}
+.award-nom-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--black);color:var(--gold);
+  padding:6px 16px;font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.award-nom-title{
+  font-family:'Cormorant Garant',serif;font-size:1.5rem;font-weight:700;
+  color:var(--black);margin-bottom:10px;line-height:1.3;
+}
+.award-nom-text{font-size:.88rem;color:var(--stone);line-height:1.7;margin-bottom:20px}
+.award-nom-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ─── VOTE POPUP MODAL ─── */
+#vote-popup-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;
+  padding:24px;
+  opacity:0;transition:opacity .4s ease;
+}
+#vote-popup-overlay.show{display:flex}
+#vote-popup-overlay.visible{opacity:1}
+.vote-popup-card{
+  position:relative;max-width:440px;width:100%;
+  background:var(--white);
+  border:1px solid var(--gold);
+  padding:44px 36px 36px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  transform:translateY(16px) scale(.98);
+  transition:transform .45s cubic-bezier(.16,1,.3,1);
+}
+#vote-popup-overlay.visible .vote-popup-card{transform:translateY(0) scale(1)}
+.vote-popup-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;cursor:pointer;
+  font-size:1.3rem;color:var(--stone);line-height:1;
+  padding:4px;transition:color .2s;
+}
+.vote-popup-close:hover{color:var(--black)}
+.vote-popup-icon{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--pale-gold);border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin:0 auto 18px;
+  color:var(--gold-dark);
+}
+.vote-popup-eyebrow{
+  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:10px;
+}
+.vote-popup-title{
+  font-family:'Cormorant Garant',serif;font-size:1.65rem;font-weight:700;
+  color:var(--black);line-height:1.25;margin-bottom:14px;
+}
+.vote-popup-text{
+  font-size:.9rem;color:var(--stone);line-height:1.7;margin-bottom:26px;
+}
+.vote-popup-actions{
+  display:flex;flex-direction:column;gap:10px;
+}
+.vote-popup-later{
+  font-size:.72rem;color:var(--stone);letter-spacing:.06em;
+  background:none;border:none;cursor:pointer;text-decoration:underline;
+  padding:6px;transition:color .2s;
+}
+.vote-popup-later:hover{color:var(--black)}
+@media(max-width:480px){
+  .vote-popup-card{padding:36px 24px 28px}
+}
+
 /* ─── CONTACT ─── */
 #contact .contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px}
 .contact-info .display{margin-bottom:16px}
@@ -863,6 +951,21 @@ footer{
   <span>Win a Signed Copy of Fire and Wrath &mdash; Goodreads Giveaway Now Open!</span>
   <a href="https://www.goodreads.com/giveaway/show/446199-fire-and-wrath" target="_blank" style="background:var(--black);color:var(--white);padding:5px 14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap;text-decoration:none">Enter Now</a>
   <button onclick="this.parentElement.style.display='none'" style="position:absolute;right:16px;background:none;border:none;cursor:pointer;font-size:1.1rem;color:rgba(0,0,0,.5);line-height:1;top:50%;transform:translateY(-50%)">&times;</button>
+</div>
+
+<!-- VOTE POPUP -->
+<div id="vote-popup-overlay">
+  <div class="vote-popup-card">
+    <button class="vote-popup-close" id="votePopupClose" aria-label="Close">&times;</button>
+    <div class="vote-popup-icon" aria-hidden="true">&#9733;</div>
+    <p class="vote-popup-eyebrow">2026 Reader's Choice Award</p>
+    <h3 class="vote-popup-title">Fire and Wrath Is Up for an Award &mdash; Will You Vote?</h3>
+    <p class="vote-popup-text">Fire and Wrath has been selected as a contender in The Kindle Book Review's Mystery/Thriller category. It takes less than a minute, and every single vote genuinely counts.</p>
+    <div class="vote-popup-actions">
+      <a href="https://www.thekindlebookreview.net/vote-mystery-thriller-2026/" target="_blank" class="btn btn-gold" id="votePopupVoteBtn">Vote for Fire and Wrath</a>
+      <button class="vote-popup-later" id="votePopupLater">Maybe later</button>
+    </div>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -1228,6 +1331,14 @@ footer{
     <div class="gold-rule reveal"></div>
     <div class="press-layout">
       <div>
+        <div class="award-nom-card reveal">
+          <span class="award-nom-badge">★ 2026 Award Nominee</span>
+          <h3 class="award-nom-title">Fire and Wrath is a Contender for The Kindle Book Review's 2026 Reader's Choice Award &mdash; Mystery/Thriller</h3>
+          <p class="award-nom-text">Fire and Wrath has been selected as an official contender in the Mystery and Thriller category. This is a reader-voted award, which means every vote genuinely counts. If you have read and enjoyed Fire and Wrath, casting a vote takes less than a minute and makes a real difference.</p>
+          <div class="award-nom-actions">
+            <a href="https://www.thekindlebookreview.net/vote-mystery-thriller-2026/" target="_blank" class="btn btn-gold">Vote for Fire and Wrath</a>
+          </div>
+        </div>
         <div class="press-featured reveal">
           <blockquote>&ldquo;Carter brings a literary sensibility and an emotional depth to this fast-paced, memorable thriller. A genuine achievement for a debut novelist.&rdquo;</blockquote>
           <cite>Chris Mooney &mdash; #1 New York Times Bestselling Author</cite>
@@ -1792,6 +1903,51 @@ if(heroBookImg && heroRight && window.matchMedia('(hover:hover)').matches){
   heroBookImg.style.transition='transform .15s ease-out';
   heroBookImg.style.transformStyle='preserve-3d';
 }
+// VOTE POPUP — shows once per browser session, after a short delay
+(function(){
+  var overlay = document.getElementById('vote-popup-overlay');
+  var closeBtn = document.getElementById('votePopupClose');
+  var laterBtn = document.getElementById('votePopupLater');
+  var voteBtn = document.getElementById('votePopupVoteBtn');
+  if(!overlay) return;
+
+  var STORAGE_KEY = 'fw_vote_popup_dismissed';
+
+  function alreadyDismissed(){
+    try{ return sessionStorage.getItem(STORAGE_KEY) === '1'; }
+    catch(e){ return false; }
+  }
+  function markDismissed(){
+    try{ sessionStorage.setItem(STORAGE_KEY, '1'); }
+    catch(e){}
+  }
+  function closePopup(){
+    overlay.classList.remove('visible');
+    setTimeout(function(){ overlay.classList.remove('show'); }, 400);
+    markDismissed();
+  }
+  function openPopup(){
+    if(alreadyDismissed()) return;
+    overlay.classList.add('show');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ overlay.classList.add('visible'); });
+    });
+  }
+
+  if(!alreadyDismissed()){
+    setTimeout(openPopup, 4500);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  laterBtn.addEventListener('click', closePopup);
+  voteBtn.addEventListener('click', function(){ markDismissed(); });
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('show')) closePopup();
+  });
+})();
 </script>
 </body>
 </html>
