@@ -411,6 +411,85 @@ img{
 }
 .bstat-lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
 
+/* ─── BOOKS (SERIES OVERVIEW) ─── */
+#books{background:var(--white)}
+#books .books-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.book-card{
+  display:grid;grid-template-columns:230px 1fr;
+  border:1px solid var(--border);background:var(--white);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;
+  min-width:0;
+}
+.book-card:hover{transform:translateY(-5px);box-shadow:0 24px 56px rgba(0,0,0,.12)}
+.book-card-cover{
+  position:relative;background:var(--off-white);
+  padding:32px 24px;display:flex;align-items:center;justify-content:center;
+  min-width:0;
+}
+.book-card-cover img{width:100%;max-width:180px;border-radius:2px;box-shadow:-12px 14px 34px rgba(0,0,0,.2)}
+.book-card-badge{
+  position:absolute;top:14px;left:14px;
+  background:var(--black);color:var(--gold);
+  font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:5px 11px;
+}
+.book-card-badge.badge-gold{background:var(--gold);color:var(--black)}
+.book-card-body{padding:32px 28px;min-width:0}
+.book-card-status{
+  display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;margin-bottom:14px;
+  background:var(--pale-gold);color:var(--gold-dark);border:1px solid var(--gold);
+}
+.book-card-series{
+  font-family:'Courier Prime',monospace;font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+}
+.book-card-title{
+  font-family:'Bree Serif',serif;font-size:2rem;font-weight:700;
+  line-height:1.05;color:var(--black);margin-bottom:12px;word-break:break-word;
+}
+.book-card-desc{font-size:.88rem;line-height:1.75;color:var(--stone);margin-bottom:18px}
+.book-card-desc em{font-style:italic}
+.book-card-meta{
+  list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;
+  padding-top:14px;margin-bottom:22px;border-top:1px solid var(--border);
+}
+.book-card-meta li{font-size:.72rem;color:var(--stone);letter-spacing:.03em}
+.book-card-meta li strong{color:var(--black);font-size:.78rem}
+.book-card-actions{display:flex;gap:10px;flex-wrap:wrap}
+.book-card-dark{background:var(--black);border-color:rgba(200,169,110,.35)}
+.book-card-dark:hover{box-shadow:0 24px 56px rgba(0,0,0,.35)}
+.book-card-dark .book-card-cover{background:#141414}
+.book-card-dark .book-card-title{color:var(--white)}
+.book-card-dark .book-card-desc{color:rgba(255,255,255,.6)}
+.book-card-dark .book-card-desc em{color:var(--gold)}
+.book-card-dark .book-card-status{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.book-card-dark .book-card-series{color:var(--gold)}
+.book-card-dark .book-card-meta{border-color:rgba(255,255,255,.12)}
+.book-card-dark .book-card-meta li{color:rgba(255,255,255,.5)}
+.book-card-dark .book-card-meta li strong{color:var(--gold)}
+.btn-outline-light{border-color:rgba(255,255,255,.5);color:var(--white)}
+.btn-outline-light:hover{background:var(--white);color:var(--black);border-color:var(--white);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.books-footnote{
+  margin-top:40px;text-align:center;
+  font-family:'Courier Prime',monospace;font-style:italic;
+  font-size:.85rem;color:var(--stone);line-height:1.7;
+}
+@media(max-width:1024px){
+  #books .books-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:640px){
+  .book-card{grid-template-columns:130px 1fr}
+  .book-card-cover{padding:20px 12px}
+  .book-card-body{padding:22px 16px}
+  .book-card-title{font-size:1.5rem}
+}
+@media(max-width:460px){
+  .book-card{grid-template-columns:1fr}
+  .book-card-cover{padding:32px}
+  .book-card-cover img{max-width:150px}
+}
+
 /* ─── REVIEWS ─── */
 #reviews{background:var(--off-white)}
 .reviews-intro{max-width:560px;margin-bottom:56px}
@@ -957,6 +1036,7 @@ footer{
   *{transition:none!important;animation:none!important}
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 <div id="scroll-progress"></div>
@@ -980,7 +1060,7 @@ footer{
 <nav id="nav">
   <a href="#hero" class="nav-logo">William F. Carter</a>
   <ul class="nav-links">
-    <li><a href="#book">The Book</a></li>
+    <li><a href="#books">Books</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#press">Press</a></li>
     <li><a href="#events">Events</a></li>
@@ -994,7 +1074,7 @@ footer{
 </nav>
 <div class="nav-mobile" id="mobileMenu">
   <ul>
-    <li><a href="#book" class="mobile-link">The Book</a></li>
+    <li><a href="#books" class="mobile-link">Books</a></li>
     <li><a href="#about" class="mobile-link">About</a></li>
     <li><a href="#press" class="mobile-link">Press</a></li>
     <li><a href="#events" class="mobile-link">Events</a></li>
@@ -1017,6 +1097,7 @@ footer{
     </div>
     <div class="hero-actions">
       <a href="https://www.amazon.com/dp/B0D56NXGBH" target="_blank" class="btn btn-solid">Get Fire and Wrath</a>
+      <a href="https://www.amazon.com/dp/B0HKPQ1N17" target="_blank" class="btn btn-gold">Preorder Book 2</a>
       <a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" class="btn btn-outline">Free Story</a>
     </div>
     <div class="hero-stats">
@@ -1054,9 +1135,72 @@ footer{
     <div class="cred-item"><strong>4.90</strong>&nbsp;Stars on Goodreads</div>
     <div class="cred-item"><strong>55+</strong>&nbsp;Verified Amazon Reviews</div>
     <div class="cred-item"><strong>#1</strong>&nbsp;Crime Fiction Search Ranking</div>
-    <div class="cred-item"><strong>Diesel and Ash</strong>&nbsp;Book 2 Coming Soon</div>
+    <div class="cred-item"><strong>Diesel and Ash</strong>&nbsp;Book 2 &bull; Oct 6, 2026</div>
   </div>
 </div>
+
+<!-- BOOKS -->
+<section id="books" class="section">
+  <div class="section-inner">
+    <div class="section-ornament"><span class="section-ornament-diamond"></span></div>
+    <span class="eyebrow reveal">The Series</span>
+    <h2 class="display reveal">The Jack Coyle <em>Thrillers</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-text reveal" style="max-width:620px;margin-bottom:48px">Arsonist Jack Coyle leads a complicated life. Trying to atone for his checkered past, he keeps getting drawn into situations where he is called upon to play the hero &mdash; risking life and limb while employing the deadly skills that made him famous in the underworld, and slowly transforming from a lifelong criminal into someone different&hellip; someone better.</p>
+    <div class="books-grid">
+
+      <!-- BOOK ONE -->
+      <article class="book-card reveal">
+        <div class="book-card-cover">
+          <img class="img-reveal" src="Fire and Wrath Front Cover.jpg" alt="Fire and Wrath — Jack Coyle Thrillers Book One by William F. Carter"/>
+          <span class="book-card-badge">Book One</span>
+        </div>
+        <div class="book-card-body">
+          <span class="book-card-status">Available Now</span>
+          <p class="book-card-series">Jack Coyle Thrillers &bull; Book One</p>
+          <h3 class="book-card-title">Fire and Wrath</h3>
+          <p class="book-card-desc">A serial arsonist is burning Plymouth County to the ground. The fires are calculated, personal, and escalating &mdash; and the deputy who has to stop them can only turn to one man: Jack Coyle, a professional arsonist on the run who recognizes the handwriting in the flames.</p>
+          <ul class="book-card-meta">
+            <li><strong>236</strong> pages</li>
+            <li><strong>Jul 19, 2024</strong></li>
+            <li><strong>Austin Macauley</strong></li>
+            <li><strong>4.9&#9733;</strong> 55+ reviews</li>
+          </ul>
+          <div class="book-card-actions">
+            <a href="https://www.amazon.com/dp/B0D56NXGBH" target="_blank" class="btn btn-solid">Buy on Amazon</a>
+            <a href="https://www.goodreads.com/book/show/213850481-fire-and-wrath" target="_blank" class="btn btn-outline">Goodreads</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- BOOK TWO -->
+      <article class="book-card book-card-dark reveal reveal-delay-1">
+        <div class="book-card-cover">
+          <img class="img-reveal" src="diesel.png" alt="Diesel and Ash — Jack Coyle Thrillers Book Two by William F. Carter"/>
+          <span class="book-card-badge badge-gold">Book Two</span>
+        </div>
+        <div class="book-card-body">
+          <span class="book-card-status">Preorder &mdash; Out Oct 6, 2026</span>
+          <p class="book-card-series">Jack Coyle Thrillers &bull; Book Two</p>
+          <h3 class="book-card-title">Diesel and Ash</h3>
+          <p class="book-card-desc">The high-octane sequel to <em>Fire and Wrath</em>. The mob has finally caught up with Jack Coyle &mdash; and the local kingpin offers him one way out: torch a rival gang&rsquo;s heavily fortified diesel refinery and walk away with money in his pocket. Miss the deadline, and it&rsquo;s all over for him.</p>
+          <ul class="book-card-meta">
+            <li><strong>258</strong> pages</li>
+            <li><strong>Oct 6, 2026</strong></li>
+            <li><strong>Imperial City Press</strong></li>
+            <li><strong>$3.99</strong> Kindle</li>
+          </ul>
+          <div class="book-card-actions">
+            <a href="https://www.amazon.com/dp/B0HKPQ1N17" target="_blank" class="btn btn-gold">Preorder on Amazon</a>
+            <a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" class="btn btn-outline btn-outline-light">Get Launch Updates</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="books-footnote reveal">Print and eBook editions of Diesel and Ash arrive October 6, 2026 &bull; Launch party &amp; signing October 24 at a local bookstore &mdash; details coming soon.</p>
+  </div>
+</section>
 
 <!-- BOOK -->
 <section id="book" class="section">
@@ -1207,14 +1351,14 @@ footer{
         <p>William F. Carter holds a Master of Arts in Creative Writing from Harvard University, the institution where the discipline, precision, and emotional honesty that define his fiction were forged. Before he ever typed the first line of Fire and Wrath, he had spent years studying what makes a story last. It shows.</p>
         <p>Carter&rsquo;s debut crime thriller has been praised by Chris Mooney, the number one New York Times bestselling author, as bringing a literary sensibility and an emotional depth to this fast-paced, memorable thriller. It has earned five-star editorial reviews from Reedsy Discovery, Books Paradise, and Book Buster, and has moved readers across four continents to comparisons with Dennis Lehane, Michael Connelly, Nelson DeMille, and Tana French.</p>
         <p>The road to Fire and Wrath began at age twelve, when Carter received his first writing award and understood, with the particular certainty that only children can access, that stories were where he was meant to live. The Harvard MFA came later. Jack Coyle came later still. But the twelve-year-old who won that award is present on every page.</p>
-        <p>Carter lives near Boston, Massachusetts, with his wife and two daughters. He plays guitar in the rock band Faded Halo, participates in community theater, and finds in both pursuits the same truth he finds in writing: that the best stories are the ones where the audience forgets they are watching. Diesel and Ash, Book 2 in the Jack Coyle series, is complete and arriving soon.</p>
+        <p>Carter lives near Boston, Massachusetts, with his wife and two daughters. He plays guitar in the rock band Faded Halo, participates in community theater, and finds in both pursuits the same truth he finds in writing: that the best stories are the ones where the audience forgets they are watching. Diesel and Ash, Book 2 in the Jack Coyle series, is available for preorder now and arrives October 6, 2026.</p>
         <div class="credentials-list">
           <div class="cred-line">Master of Arts in Creative Writing, Harvard University</div>
           <div class="cred-line">Praised by Chris Mooney, #1 New York Times Bestselling Author</div>
           <div class="cred-line">55+ Amazon reviews and 92+ Goodreads reviews at 4.90 stars</div>
           <div class="cred-line">Readers comparing Fire and Wrath to Lehane, Connelly, DeMille, and French</div>
           <div class="cred-line">First writing award received at age twelve</div>
-          <div class="cred-line">Diesel and Ash, Book 2 in the Jack Coyle Thrillers series, complete and coming soon</div>
+          <div class="cred-line">Diesel and Ash, Book 2 in the Jack Coyle Thrillers series, releasing October 6, 2026</div>
           <div class="cred-line">Based near Boston, Massachusetts</div>
         </div>
       </div>
@@ -1422,7 +1566,7 @@ footer{
     <div class="faq-grid">
       <div class="faq-item reveal">
         <p class="faq-q">When is Book 2 in the Jack Coyle series releasing?</p>
-        <p class="faq-a">Book 2, titled Diesel and Ash, is complete and arriving soon. Sign up for the email list to receive the release date, early chapters, and pre-order details before anyone else.</p>
+        <p class="faq-a">Book 2, Diesel and Ash, releases October 6, 2026 in eBook and print. The Kindle edition is available for preorder now. Sign up for the email list for launch party details and release news before anyone else.</p>
       </div>
       <div class="faq-item reveal reveal-delay-1">
         <p class="faq-q">Where can I buy Fire and Wrath?</p>
@@ -1454,9 +1598,33 @@ footer{
     <span class="eyebrow reveal">Appearances</span>
     <h2 class="display reveal">Events &amp; <em>Appearances</em></h2>
     <div class="gold-rule reveal"></div>
-    <p class="body-text reveal" style="max-width:600px;margin-bottom:48px">William F. Carter has appeared at bookstores, libraries, and community events across Massachusetts and New England since the publication of Fire and Wrath in July 2024. Each appearance reflects his genuine love for connecting with readers and the communities that have embraced Jack Coyle's story.</p>
+    <p class="body-text reveal" style="max-width:600px;margin-bottom:48px">William F. Carter has appeared at bookstores, libraries, and community events across Massachusetts and New England since the publication of Fire and Wrath in July 2024. Each appearance reflects his genuine love for connecting with readers and the communities that have embraced Jack Coyle's story. This October, the celebration continues with the Diesel and Ash launch party and book signing on October 24 at a local bookstore, plus local cable interview appearances to be announced.</p>
 
     <div class="events-list reveal">
+
+      <div class="event-item" style="border-left:3px solid var(--gold)">
+        <div class="event-date">
+          <span class="event-date-day">24</span>
+          <span class="event-date-mon">Oct 2026</span>
+        </div>
+        <div>
+          <p class="event-title">Diesel and Ash Launch Party &amp; Book Signing</p>
+          <p class="event-details">Local bookstore &bull; Boston area, Massachusetts &bull; Details announced soon</p>
+        </div>
+        <span style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:6px 14px;white-space:nowrap">Upcoming</span>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date">
+          <span class="event-date-day">06</span>
+          <span class="event-date-mon">Oct 2026</span>
+        </div>
+        <div>
+          <p class="event-title">Diesel and Ash Release Day &mdash; eBook &amp; Print</p>
+          <p class="event-details">Kindle preorder live now &bull; Available everywhere books are sold online</p>
+        </div>
+        <span style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:var(--pale-gold);padding:6px 14px;white-space:nowrap">Upcoming</span>
+      </div>
 
       <div class="event-item">
         <div class="event-date">
@@ -1592,13 +1760,14 @@ footer{
           <img class="book2-cover-img img-reveal" src="diesel.png" alt="Diesel and Ash by William F. Carter, Book 2 of the Jack Coyle Thrillers"/>
         </div>
         <div>
-          <span class="eyebrow" style="color:rgba(200,169,110,.7)">Book 2 Is Here</span>
+          <span class="eyebrow" style="color:rgba(200,169,110,.7)">Book Two &mdash; Preorder Now</span>
           <h3 style="font-family:'Bree Serif',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:16px">Diesel and Ash</h3>
           <div style="width:48px;height:2px;background:var(--gold);margin-bottom:28px"></div>
-          <p style="font-size:1rem;line-height:1.85;color:rgba(255,255,255,.6);max-width:560px;margin-bottom:8px">The next chapter in the Jack Coyle Thriller Series is complete and coming soon.</p>
+          <p style="font-size:1rem;line-height:1.85;color:rgba(255,255,255,.6);max-width:560px;margin-bottom:8px">The high-octane sequel to Fire and Wrath. The Kindle edition is available for preorder now, and the eBook and print editions arrive October 6, 2026.</p>
           <p style="font-family:'Courier Prime',monospace;font-style:italic;font-size:.95rem;color:var(--gold);line-height:1.7;max-width:520px;margin-bottom:32px">&ldquo;Fire and Wrath was about redemption. Diesel and Ash is about accountability. Jack Coyle takes responsibility for his past, pays for it by pulling off an impossible mission, and makes a choice that will define the rest of his life.&rdquo;</p>
-          <p style="font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:24px">Sign up to be the first to know when it arrives</p>
-          <a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" style="display:inline-block;background:var(--gold);color:var(--black);padding:13px 28px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:1px;transition:background .2s">Join the List</a>
+          <p style="font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:24px">Preorder now &mdash; or join the list for launch party details</p>
+          <a href="https://www.amazon.com/dp/B0HKPQ1N17" target="_blank" style="display:inline-block;background:var(--gold);color:var(--black);padding:13px 28px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:1px;transition:background .2s;margin-right:10px">Preorder on Amazon</a>
+          <a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" style="display:inline-block;background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5);padding:11px 26px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:1px;transition:all .2s">Join the List</a>
         </div>
       </div>
     </div>
@@ -1688,6 +1857,7 @@ footer{
       <div class="footer-nav-col">
         <p class="footer-nav-title">Navigate</p>
         <ul class="footer-nav-links">
+          <li><a href="#books">Books</a></li>
           <li><a href="#book">Fire and Wrath</a></li>
           <li><a href="#reviews">Reader Reviews</a></li>
           <li><a href="#about">About William</a></li>
