@@ -457,6 +457,15 @@ img{
 .book-card-meta li{font-size:.72rem;color:var(--stone);letter-spacing:.03em}
 .book-card-meta li strong{color:var(--black);font-size:.78rem}
 .book-card-actions{display:flex;gap:10px;flex-wrap:wrap}
+.book-card-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.book-link-btn{
+  font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 14px;border:1px solid var(--border);color:var(--stone);
+  background:transparent;transition:all .2s;border-radius:1px;
+}
+.book-link-btn:hover{border-color:var(--gold);color:var(--gold-dark);background:var(--pale-gold)}
+.book-card-dark .book-link-btn{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)}
+.book-card-dark .book-link-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(200,169,110,.1)}
 .book-card-dark{background:var(--black);border-color:rgba(200,169,110,.35)}
 .book-card-dark:hover{box-shadow:0 24px 56px rgba(0,0,0,.35)}
 .book-card-dark .book-card-cover{background:#141414}
@@ -1167,8 +1176,14 @@ footer{
             <li><strong>4.9&#9733;</strong> 55+ reviews</li>
           </ul>
           <div class="book-card-actions">
-            <a href="https://www.amazon.com/dp/B0D56NXGBH" target="_blank" class="btn btn-solid">Buy on Amazon</a>
-            <a href="https://www.goodreads.com/book/show/213850481-fire-and-wrath" target="_blank" class="btn btn-outline">Goodreads</a>
+            <a href="https://www.amazon.com/Fire-Wrath-William-F-Carter-ebook/dp/B0D7F8HVZX/" target="_blank" rel="noopener" class="btn btn-solid">Buy on Amazon</a>
+            <a href="https://www.barnesandnoble.com/w/fire-and-wrath-william-f-carter/1145669201?ean=9798891555921" target="_blank" rel="noopener" class="btn btn-outline">Barnes &amp; Noble</a>
+          </div>
+          <div class="book-card-links">
+            <a href="https://reedsy.com/discovery/book/fire-and-wrath-bill-carter#review" target="_blank" rel="noopener" class="book-link-btn">Reedsy &#9733;&#9733;&#9733;&#9733;&#9733;</a>
+            <a href="https://www.goodreads.com/book/show/213850481-fire-and-wrath" target="_blank" rel="noopener" class="book-link-btn">Goodreads</a>
+            <a href="https://vowelor.com/book/fire-wrath-william-f-carter/" target="_blank" rel="noopener" class="book-link-btn">Vowelor</a>
+            <a href="https://vowelor.com/william-f-carter-author-interview/" target="_blank" rel="noopener" class="book-link-btn">Author Interview</a>
           </div>
         </div>
       </article>
@@ -1191,8 +1206,12 @@ footer{
             <li><strong>$3.99</strong> Kindle</li>
           </ul>
           <div class="book-card-actions">
-            <a href="https://www.amazon.com/dp/B0HKPQ1N17" target="_blank" class="btn btn-gold">Preorder on Amazon</a>
-            <a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" class="btn btn-outline btn-outline-light">Get Launch Updates</a>
+            <a href="https://www.amazon.com/Diesel-Ash-Coyle-Thriller-Thrillers-ebook/dp/B0HKPQ1N17/" target="_blank" rel="noopener" class="btn btn-gold">Preorder on Amazon</a>
+            <a href="https://mailchi.mp/aa94eef8e595/jack-coyles-story-continues" target="_blank" rel="noopener" class="btn btn-outline btn-outline-light">Get Launch Updates</a>
+          </div>
+          <div class="book-card-links">
+            <a href="https://reedsy.com/discovery/book/diesel-and-ash-bill-carter#review" target="_blank" rel="noopener" class="book-link-btn">Reedsy Discovery</a>
+            <a href="https://www.goodreads.com/book/show/259591761-diesel-and-ash" target="_blank" rel="noopener" class="book-link-btn">Goodreads</a>
           </div>
         </div>
       </article>
